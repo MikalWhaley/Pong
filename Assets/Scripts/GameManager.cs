@@ -7,16 +7,55 @@ public class GameManager : MonoBehaviour
     public GameObject ball;
     public float ballSpeed = 5f;
 
+    private AudioClip bgm;
+    private AudioSource source;
+
+    public GameObject blueMateria;
+    public bool blueExists = false;
+    public bool greenExists = false;
+
+    public GameObject greenMateria;
+
+    public float gameTimer = 5;
+
     // Start is called before the first frame update
     void Start()
     {
         CreateBall(0);
+        source = GetComponent<AudioSource>();
+        //source.PlayOneShot(bgm, 1F);
+
+
+        blueExists = true;
+        float ran1 = Random.Range(-6, 6);
+        float ran2 = Random.Range(-6, 6);
+        GameObject bluePre = Instantiate(blueMateria, new Vector3(ran1, 0, ran2), transform.rotation);
+
+        greenExists = true;
+        float ran3 = Random.Range(-6, 6);
+        float ran4 = Random.Range(-6, 6);
+        GameObject greenPre = Instantiate(greenMateria, new Vector3(ran3, 0, ran4), transform.rotation);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void createGreenMateria()
+    {
+        greenExists = true;
+        float ran3 = Random.Range(-6, 6);
+        float ran4 = Random.Range(-6, 6);
+        GameObject greenPre = Instantiate(greenMateria, new Vector3(ran3, 0, ran4), transform.rotation);
+    }
+    public void createBlueMateria()
+    {
+        blueExists = true;
+        float ran1 = Random.Range(-6, 6);
+        float ran2 = Random.Range(-6, 6);
+        GameObject bluePre = Instantiate(blueMateria, new Vector3(ran1, 0, ran2), transform.rotation);
     }
 
     public void CreateBall(int caseNum)
